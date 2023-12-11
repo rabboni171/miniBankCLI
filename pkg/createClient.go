@@ -4,10 +4,10 @@ import "fmt"
 
 //var database =
 
-// create a client
+// CreateClient create a client
 func CreateClient() {
 	var name string
-	var balance int
+	var balance float64
 	fmt.Print("Enter client name: ")
 	fmt.Scan(&name)
 	Database[name] = balance

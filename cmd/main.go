@@ -13,7 +13,9 @@ func main() {
 		fmt.Println("2. Top up client's balance")
 		fmt.Println("3. Show all clients")
 		fmt.Println("4. Withdraw money from client's balance")
-		fmt.Println("5. Stop session")
+		fmt.Println("5. Transfer money ")
+		fmt.Println("6. Profit of Bank")
+		fmt.Println("7. Stop session")
 
 		fmt.Scan(&choice)
 
@@ -27,11 +29,13 @@ func main() {
 		case 4:
 			pkg.TakeOffMoney()
 		case 5:
-			return
+			pkg.TransferMoney()
+		case 6:
+			pkg.ShowProfit()
 		default:
 			fmt.Println("Invalid choice. Please try again.")
 		}
 
-		time.Sleep(2 * time.Second)
+		time.Sleep(1 * time.Second)
 	}
 }

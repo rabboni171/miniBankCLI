@@ -2,10 +2,10 @@ package pkg
 
 import "fmt"
 
-// withdraw money from client's balance
+// TakeOffMoney withdraw money from client's balance
 func TakeOffMoney() {
 	var name string
-	var amount int
+	var amount float64
 	fmt.Print("Enter client name and amount to withdraw: ")
 	fmt.Scan(&name, &amount)
 	if balance, ok := Database[name]; ok {

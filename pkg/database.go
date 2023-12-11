@@ -1,4 +1,6 @@
 package pkg
 
-// map as database
-var Database = make(map[string]int)
+// Database map as database
+var Database = make(map[string]float64)
+
+var Percent = 10.0

@@ -2,7 +2,7 @@ package pkg
 
 import "fmt"
 
-// show all clients
+// ShowAllClients show all clients
 func ShowAllClients() {
 	fmt.Println("Clients:")
 	for k, v := range Database {
