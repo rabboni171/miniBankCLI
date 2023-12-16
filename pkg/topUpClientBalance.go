@@ -1,17 +1,37 @@
 package pkg
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // TopUpClientBalance top up client's balance
 func TopUpClientBalance() {
 	var name string
 	var amount float64
-	fmt.Print("Enter client name and amount to top up: ")
-	fmt.Scan(&name, &amount)
-	if balance, ok := Database[name]; ok {
-		Database[name] = balance + amount
-		fmt.Println("Well done!")
-	} else {
-		fmt.Println("Client not found!")
+	fmt.Print("Enter client name: ")
+	fmt.Scan(&name)
+
+	var balance float64
+	var has bool
+
+	// check// has or no client
+	for _, val := range Clients {
+		if name == val.Name {
+			balance = val.Balance
+			has = true
+		}
+	}
+
+	if !has {
+		fmt.Println("Error! there is no such client in DB")
+	}
+
+	fmt.Println("Sum to top up: ")
+	fmt.Scan(&amount)
+
+	for _, val := range Clients {
+		if name == val.Name {
+			val.Balance = balance + amount
+		}
 	}
 }

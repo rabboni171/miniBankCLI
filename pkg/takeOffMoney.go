@@ -2,20 +2,39 @@ package pkg
 
 import "fmt"
 
-// TakeOffMoney withdraw money from client's balance
 func TakeOffMoney() {
 	var name string
 	var amount float64
-	fmt.Print("Enter client name and amount to withdraw: ")
-	fmt.Scan(&name, &amount)
-	if balance, ok := Database[name]; ok {
-		if balance >= amount {
-			Database[name] = balance - amount
-			fmt.Println("Well done!")
-		} else {
-			fmt.Println("Sorry, not enough money")
+
+	fmt.Println("Client name: ")
+	fmt.Scan(&name)
+	var balance float64
+	var has bool
+
+	// check // has or no client
+	for _, val := range Clients {
+		if name == val.Name {
+			balance = val.Balance
+			has = true
 		}
-	} else {
-		fmt.Println("Client not found!")
 	}
+
+	if !has {
+		fmt.Println("Error! there is no such client in DB")
+		return
+	}
+
+	fmt.Println("Type the sum to take off from balance: ")
+	fmt.Scan(&amount)
+
+	if balance < amount {
+		fmt.Println("Error! Not enough money to take off!")
+		return
+	}
+	for _, val := range Clients {
+		if name == val.Name {
+			val.Balance = balance - amount
+		}
+	}
+
 }
